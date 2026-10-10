@@ -10,15 +10,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: a186ed64cbd21cf45b339e5492f33ac1, type: 3}
       propertyPath: m_LocalScale.x
-      value: 3
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a186ed64cbd21cf45b339e5492f33ac1, type: 3}
       propertyPath: m_LocalScale.y
-      value: 3
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a186ed64cbd21cf45b339e5492f33ac1, type: 3}
       propertyPath: m_LocalScale.z
-      value: 3
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a186ed64cbd21cf45b339e5492f33ac1, type: 3}
       propertyPath: m_LocalPosition.x
@@ -60,9 +60,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a186ed64cbd21cf45b339e5492f33ac1, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: a186ed64cbd21cf45b339e5492f33ac1, type: 3}
       propertyPath: m_Name
-      value: big_tree
+      value: big_tree_c
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -71,6 +75,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: a186ed64cbd21cf45b339e5492f33ac1, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1141024560866810872}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: a186ed64cbd21cf45b339e5492f33ac1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6951542593237081332}
   m_SourcePrefab: {fileID: 100100000, guid: a186ed64cbd21cf45b339e5492f33ac1, type: 3}
 --- !u!1 &9101234198762182262 stripped
 GameObject:
@@ -102,7 +109,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: -6538903991835684241, guid: 069c29af7688ea04495c62b1805b63c0, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -126,3 +133,11 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &6951542593237081332
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9101234198762182262}
+  m_Mesh: {fileID: -5600180399591002894, guid: bea8a9dc9edbcec42b321d5ccd75b754, type: 3}

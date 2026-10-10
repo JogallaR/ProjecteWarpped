@@ -95,7 +95,7 @@ public class PlayerMover : MonoBehaviour
             }
             else
             {
-                print("Not enough mana: need {steps}, have {movePoints}");
+                print($"Not enough mana: need {steps}, have {movePoints}");
             }
             
             return;

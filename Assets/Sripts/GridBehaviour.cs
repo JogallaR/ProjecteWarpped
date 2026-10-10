@@ -10,7 +10,6 @@ public class GridBehaviour : MonoBehaviour
     public GameObject gridPrefab;
     public Vector3 leftBottomLocation = Vector3.zero;
     public GridStat[,] gridArray;
-    
     static readonly Vector2Int[] Directions = {Vector2Int.up, Vector2Int.right, Vector2Int.down, Vector2Int.left};
 
     void Awake()

@@ -8,14 +8,8 @@ public class GridStat : MonoBehaviour
     public int y = 0; //Arriben de 0 a 15 
     public bool walkable = true;
 
-    void Start()
-    {
+    void Start(){}
 
-    }
-
-    void Update()
-    {
-
-    }
+    void Update(){}
 
 }
