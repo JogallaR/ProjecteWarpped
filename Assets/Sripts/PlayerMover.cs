@@ -2,13 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using TMPro;
 
 public class PlayerMover : MonoBehaviour
 {
+    //Moves per mana
+    const int MovesPerMana = 3;
+
+    //TextmeshPro mana
+    [SerializeField] TMP_Text MoveText;
 
     public int manaThisTurn = 0;
-    public int minRoll = 1;
+    public int minRoll = 2;
     public int maxRoll = 6;
+    //Mana aquest punts
     public int movePoints;
 
     public GridBehaviour grid;
@@ -17,15 +24,19 @@ public class PlayerMover : MonoBehaviour
     public float heightOffset = 1.05f;
 
     bool moving;
+    //Referencia publica
+    public bool IsMoving => moving;
 
     void Start()
     {
+        //Creacio grid
         transform.position = TileWorld(position);
-        RollManaTurn();
+        EndTurn();
     }
 
     void Update()
     {
+
         if (moving) return;
 
         Keyboard keyboard = Keyboard.current;
@@ -33,12 +44,6 @@ public class PlayerMover : MonoBehaviour
 
         if (keyboard != null)
         {
-            if (keyboard.spaceKey.wasPressedThisFrame)
-            {
-                RollManaTurn();
-                return;
-            }
-
             Vector2Int dir = Vector2Int.zero;
             if (keyboard.wKey.wasPressedThisFrame) dir = Vector2Int.up;
             else if (keyboard.dKey.wasPressedThisFrame) dir = Vector2Int.right;
@@ -70,37 +75,34 @@ public class PlayerMover : MonoBehaviour
         }
     }
 
-    void RollManaTurn()
+    public void EndTurn()
     {
         manaThisTurn = Random.Range(minRoll, maxRoll + 1);
-        RollMovePoints();
+        movePoints = manaThisTurn * MovesPerMana;
+        print($"New turn: {manaThisTurn} mana x {MovesPerMana} = {movePoints} move points");
+        UpdateUI();
     }
 
-    void RollMovePoints()
+    void UpdateUI()
     {
-        movePoints = manaThisTurn * 3; //Mana to move = 3
-        print($"New turn: You have {manaThisTurn} mana x {3} = {movePoints} move points");
-        manaThisTurn = 0;
+        if (MoveText) MoveText.text = $"{movePoints}";
     }
 
     void TryMove(List<GridStat> path)
     {
         int steps = path.Count - 1;
-        
+
         if (steps > movePoints)
         {
-            if(movePoints == 0)
-            {
-                print("En your turn to get more moves");
-            }
+            if (movePoints == 0)
+                print("End your turn to get more moves");
             else
-            {
                 print($"Not enough mana: need {steps}, have {movePoints}");
-            }
-            
             return;
         }
+
         movePoints -= steps;
+        UpdateUI();
         StartCoroutine(FollowPath(path));
     }
 
@@ -122,7 +124,7 @@ public class PlayerMover : MonoBehaviour
         print($"Move points left: {movePoints}");
 
         if (movePoints <= 0)
-            print("Press space to end turn and get more moves");
+            print("Press Enter to end turn and get more moves");
     }
 
     Vector3 TileWorld(Vector2Int p)
