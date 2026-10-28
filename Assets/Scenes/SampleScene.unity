@@ -182,6 +182,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Grid
       objectReference: {fileID: 0}
+    - target: {fileID: 3848706059822911446, guid: 3de0ce3c93452c4499840120e50e2964, type: 3}
+      propertyPath: columns
+      value: 30
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -273,7 +277,7 @@ Transform:
   m_GameObject: {fileID: 450761258}
   serializedVersion: 2
   m_LocalRotation: {x: -0.3390502, y: -0.03750307, z: 0.013903745, w: -0.9399177}
-  m_LocalPosition: {x: 6.4214783, y: 13.006867, z: -8.732021}
+  m_LocalPosition: {x: 6.19, y: 9.49, z: -11.64}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -533,6 +537,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMover
   MoveText: {fileID: 202952412}
+  central: {fileID: 0}
   manaThisTurn: 0
   minRoll: 1
   maxRoll: 6

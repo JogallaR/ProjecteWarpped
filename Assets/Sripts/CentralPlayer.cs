@@ -43,12 +43,14 @@ public class CentralPlayer : MonoBehaviour
 
         if (inSettings) return;
 
+        //Debug
         if (keyboard.fKey.wasPressedThisFrame)
         {
             TakeDamage(5);
             return;
         }
 
+        //Debug
         if (keyboard.hKey.wasPressedThisFrame)
         {
             Heal(1);

@@ -12,6 +12,8 @@ public class PlayerMover : MonoBehaviour
     //TextmeshPro mana
     [SerializeField] TMP_Text MoveText;
 
+    [SerializeField] CentralPlayer central;
+
     public int manaThisTurn = 0;
     public int minRoll = 2;
     public int maxRoll = 6;
@@ -26,6 +28,12 @@ public class PlayerMover : MonoBehaviour
     bool moving;
     //Referencia publica
     public bool IsMoving => moving;
+
+
+    void Awake()
+    {
+        if (!central) central = GetComponentInParent<CentralPlayer>();
+    }
 
     void Start()
     {
@@ -54,7 +62,13 @@ public class PlayerMover : MonoBehaviour
             {
                 Vector2Int target = position + dir;
                 if (grid.IsWalkable(target.x, target.y))
+                {
+                    if (grid.gridArray[position.x, position.y].dangerous && movePoints > 0)
+                    {
+                        central.Heal(1);
+                    }
                     TryMove(new List<GridStat> { grid.gridArray[position.x, position.y], grid.gridArray[target.x, target.y] });
+                }
                 return;
             }
         }
@@ -67,7 +81,8 @@ public class PlayerMover : MonoBehaviour
                 GridStat tile = hit.collider.GetComponentInParent<GridStat>();
                 if (tile)
                 {
-                    List<GridStat> path = grid.FindPath(position, new Vector2Int(tile.x, tile.y));
+                    List<GridStat> path = grid.Safewalk(position, new Vector2Int(tile.x, tile.y));
+                    //List<GridStat> path = grid.FindPath(position, new Vector2Int(tile.x, tile.y));
                     if (path.Count > 1)
                         TryMove(path);
                 }
@@ -111,6 +126,19 @@ public class PlayerMover : MonoBehaviour
         moving = true;
         foreach (GridStat tile in path)
         {
+            if (tile.dangerous)
+            {
+                print(tile + " dangerous");
+                central.TakeDamage(1);
+                //Comp
+            }
+            if (tile.heal)
+            {
+                print(tile + " heal");
+                central.Heal(1);
+                grid.UseHeal(tile.x, tile.y);
+            }
+
             Vector3 target = TileWorld(new Vector2Int(tile.x, tile.y));
             while ((transform.position - target).sqrMagnitude > 0.0001f)
             {
