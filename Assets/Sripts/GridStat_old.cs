@@ -1,7 +1,7 @@
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class GridStat : MonoBehaviour
+public class GridStat_old : MonoBehaviour
 {
     public int visited = -1;
     public int x = 0; //Arriben de 0 a 15

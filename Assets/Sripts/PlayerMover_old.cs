@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerMover : MonoBehaviour
+public class PlayerMover_old : MonoBehaviour
 {
 
     public int manaThisTurn = 0;

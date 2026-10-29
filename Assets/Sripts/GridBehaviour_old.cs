@@ -2,7 +2,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GridBehaviour : MonoBehaviour
+public class GridBehaviour_old : MonoBehaviour
 {
     public int rows = 15;
     public int columns = 15;
