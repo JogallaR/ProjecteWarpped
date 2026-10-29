@@ -20,6 +20,7 @@ public class MainMenuManager : MonoBehaviour
     private void Start()
     {
         ShowMainMenu();
+        Time.timeScale = 1f;
     }
 
     // --- NAVEGACIÓ ENTRE PANELLS ---
@@ -78,20 +79,31 @@ public class MainMenuManager : MonoBehaviour
         }
     }
 
+
     public void OpenOptionsSubmenu()
     {
+        if (mainMenuPanel != null)
+        {
+            mainMenuPanel.SetActive(false);
+        }
+
+        if (characterSelectPanel != null)
+        {
+            characterSelectPanel.SetActive(false);
+        }
+
+        if (characterPreview != null)
+        {
+            characterPreview.SetActive(false);
+        }
+
         if (optionsPanel != null)
         {
-            if (mainMenuPanel != null)
-            {
-                mainMenuPanel.SetActive(false);
-            }
-
             optionsPanel.SetActive(true);
         }
         else
         {
-            Debug.Log("El panell d'opcions encara no està assignat.");
+            Debug.LogError("El panell d'opcions no està assignat!", this);
         }
     }
 
