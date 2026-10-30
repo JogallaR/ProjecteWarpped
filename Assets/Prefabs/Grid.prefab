@@ -49,4 +49,3 @@ MonoBehaviour:
   scale: 1
   gridPrefab: {fileID: 3089445097944115798, guid: c00e6efd21e421544a8cb93392c423a1, type: 3}
   leftBottomLocation: {x: 0, y: 0, z: 0}
-  healEffect: {fileID: 8658221080270361599, guid: 87e3001859c35874abd300e03fe368a3, type: 3}

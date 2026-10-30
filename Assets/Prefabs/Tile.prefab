@@ -129,6 +129,3 @@ MonoBehaviour:
   x: 0
   y: 0
   walkable: 1
-  dangerous: 0
-  heal: 0
-  healEffect: {fileID: 8658221080270361599, guid: 87e3001859c35874abd300e03fe368a3, type: 3}
