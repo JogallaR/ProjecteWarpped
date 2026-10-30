@@ -12,7 +12,6 @@ public class CentralPlayer : MonoBehaviour
     [SerializeField] TMP_Text textHealth;
     [SerializeField] GameObject settingsPanel;
     [SerializeField] DeathMenu deathMenu;
-
     [SerializeField] GameObject deathPlane;
 
     void Awake()
@@ -31,7 +30,14 @@ public class CentralPlayer : MonoBehaviour
     void Start()
     {
         mover.enabled = true;
-        deathMenu.Init(deathPlane);
+        try {
+            deathMenu.Init(deathPlane);
+        }
+        catch
+        {
+            print("Error on death plane");
+        }
+        ;
         SetSettings(false);
         UpdateUI();
     }

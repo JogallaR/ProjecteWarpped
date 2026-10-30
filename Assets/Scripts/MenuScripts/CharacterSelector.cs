@@ -134,7 +134,7 @@ public class CharacterSelector : MonoBehaviour
 
                 if (anim != null)
                 {
-                    anim.Play("Idle", 0, 0f);
+                    anim.Play("Idle", 0, 0f); //Animation
                 }
             }
         }

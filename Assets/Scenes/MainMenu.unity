@@ -2390,7 +2390,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: REASING KEYS
+  m_text: REASSIGN KEYS
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 11e567195b0b2a47920ad009088f9381, type: 2}
   m_sharedMaterial: {fileID: -7342461025632461824, guid: 11e567195b0b2a47920ad009088f9381, type: 2}
@@ -2417,7 +2417,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 50
+  m_fontSize: 46.95
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -4171,11 +4171,11 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2010351786}
   - {fileID: 1913387886}
   - {fileID: 1145904273}
   - {fileID: 518754995}
   - {fileID: 52642011}
+  - {fileID: 1173230242}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &906945108
@@ -4193,7 +4193,7 @@ MonoBehaviour:
   characters:
   - {fileID: 1431857729}
   - {fileID: 1976764197}
-  - {fileID: 1210148177}
+  - {fileID: 1173230241}
   - {fileID: 1123908250}
   - {fileID: 473731115}
   customNames:
@@ -5035,9 +5035,14 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3174400246675787847, guid: 7a29c66924d73da4181063a681b56136, type: 3}
   m_PrefabInstance: {fileID: 4733507407800981795}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1210148177 stripped
+--- !u!1 &1173230241 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 3496573895138214100, guid: b02d20fd042d34d4b992190d314214e1, type: 3}
+  m_CorrespondingSourceObject: {fileID: 2507848002468566048, guid: b02d20fd042d34d4b992190d314214e1, type: 3}
+  m_PrefabInstance: {fileID: 2600047164765621493}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1173230242 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2992214053444619930, guid: b02d20fd042d34d4b992190d314214e1, type: 3}
   m_PrefabInstance: {fileID: 2600047164765621493}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1214752561
@@ -6313,7 +6318,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1693238917
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7157,11 +7162,6 @@ RectTransform:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8982882702012027623, guid: 8f2a453aecbd3324fb43c48996db6376, type: 3}
   m_PrefabInstance: {fileID: 6818340171128220271}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &2010351786 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4309245287914691182, guid: b02d20fd042d34d4b992190d314214e1, type: 3}
-  m_PrefabInstance: {fileID: 2600047164765621493}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &2020168415
 GameObject:

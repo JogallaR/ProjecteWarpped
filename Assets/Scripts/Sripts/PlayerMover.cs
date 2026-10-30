@@ -181,7 +181,7 @@ public class PlayerMover : MonoBehaviour
     {
         try {
             return grid.GridToWorld(p.x, p.y) + Vector3.up * heightOffset;
-        } catch (Exception e)
+        } catch (Exception)
         {
             //Assuming you are on the menu
             return new Vector3(0,0,0);

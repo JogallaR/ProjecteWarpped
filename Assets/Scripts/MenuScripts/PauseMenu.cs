@@ -31,8 +31,14 @@ public class PauseMenu : MonoBehaviour
             return;
 
         if (Keyboard.current.escapeKey.wasPressedThisFrame)
-        {
-            if (isOptionsOpen)
+        {   
+            if (!isPaused)
+            {
+                PauseGame();
+            }
+            
+            /**
+            else if (isOptionsOpen)
             {
                 // 1. Si estem dins de So o Controls -> Tornar al menú principal d'Opcions
                 if (optionsPanelController != null && optionsPanelController.IsInSubmenu())
@@ -45,11 +51,8 @@ public class PauseMenu : MonoBehaviour
                     BackToPauseMenu();
                 }
             }
-            else if (!isPaused)
-            {
-                // 3. Si el joc no està pausat -> Pausar el joc
-                PauseGame();
-            }
+            */
+            
             else
             {
                 // 4. Si estem al menú de Pausa -> Reprendre el joc
