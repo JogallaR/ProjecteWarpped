@@ -8,13 +8,16 @@ using Random = UnityEngine.Random;
 
 public class PlayerMover : MonoBehaviour
 {
+    public static event Action<PlayerMover> TurnEnded;
+
     //Moves per mana
-    const int MovesPerMana = 3;
+    const int MovesPerMana = 2;
 
     //TextmeshPro mana
     [SerializeField] TMP_Text MoveText;
 
     [SerializeField] CentralPlayer central;
+    public CentralPlayer Central => central;
 
     public int manaThisTurn = 0;
     public int minRoll = 2;
@@ -22,12 +25,14 @@ public class PlayerMover : MonoBehaviour
     //Mana aquest punts
     public int movePoints;
 
-    public bool effectdo = true;
+    public bool effectDo = true;
 
     public GridBehaviour grid;
     public Vector2Int position;
     public float moveSpeed = 8f;
     public float heightOffset = 0.05f;
+
+    public bool smartWalk = false;
 
     bool moving;
     //Referencia publica
@@ -39,13 +44,13 @@ public class PlayerMover : MonoBehaviour
         if (!central) central = GetComponentInParent<CentralPlayer>();
     }
 
- public void Init(GridBehaviour gridRef, TMP_Text moveText, Vector2Int spawnTile)
-{
-    grid = gridRef;
-    MoveText = moveText;
-    position = spawnTile;
-    transform.position = TileWorld(position);
-}
+    public void Init(GridBehaviour gridRef, TMP_Text moveText, Vector2Int spawnTile)
+    {
+        grid = gridRef;
+        MoveText = moveText;
+        position = spawnTile;
+        transform.position = TileWorld(position);
+    }
 
     void Start()
     {
@@ -64,6 +69,18 @@ public class PlayerMover : MonoBehaviour
 
         if (keyboard != null)
         {
+
+             if (keyboard.cKey.wasPressedThisFrame)
+            {
+                if (smartWalk)
+                { smartWalk = false;}
+                else if (!smartWalk)
+                {
+                    smartWalk = true;
+                }
+            }
+            ;
+
             Vector2Int dir = Vector2Int.zero;
             if (keyboard.upArrowKey.wasPressedThisFrame) dir = Vector2Int.down;
             else if (keyboard.rightArrowKey.wasPressedThisFrame) dir = Vector2Int.left;
@@ -84,6 +101,7 @@ public class PlayerMover : MonoBehaviour
                 }
                 return;
             }
+
         }
 
         if (mouse != null && mouse.leftButton.wasPressedThisFrame)
@@ -94,8 +112,15 @@ public class PlayerMover : MonoBehaviour
                 GridStat tile = hit.collider.GetComponentInParent<GridStat>();
                 if (tile)
                 {
-                    List<GridStat> path = grid.Safewalk(position, new Vector2Int(tile.x, tile.y));
-                    //List<GridStat> path = grid.FindPath(position, new Vector2Int(tile.x, tile.y));
+                    List<GridStat> path;
+                    
+                    if (smartWalk)
+                    {
+                        path = grid.Safewalk(position, new Vector2Int(tile.x, tile.y));    
+                    } else
+                    {
+                        path = grid.FindPath(position, new Vector2Int(tile.x, tile.y));    
+                    }
                     if (path.Count > 1)
                         TryMove(path);
                 }
@@ -109,6 +134,23 @@ public class PlayerMover : MonoBehaviour
         movePoints = manaThisTurn * MovesPerMana;
         print($"New turn: {manaThisTurn} mana x {MovesPerMana} = {movePoints} move points");
         UpdateUI();
+        grid.chekcDisableDamage();
+        TurnEnded?.Invoke(this);
+    }
+
+    public void changePathLogic()
+    {
+        if (smartWalk)
+                { smartWalk = false;}
+                else if (!smartWalk)
+                {
+                    smartWalk = true;
+                }
+    }
+
+    public Vector2 GetPosition()
+    {
+        return position;
     }
 
     void UpdateUI()
@@ -144,20 +186,20 @@ public class PlayerMover : MonoBehaviour
                 print(tile + " dangerous");
                 central.TakeDamage(1);
 
-                if (effectdo)
+                if (effectDo)
                 {
                     grid.DamageEffect(tile.x,tile.y);
-                    effectdo = false;    
+                    effectDo = false;    
                 } else
                 {
-                    effectdo = true;
+                    effectDo = true;
                 }
                 //Comp
             }
             if (tile.heal)
             {
                 print(tile + " heal");
-                central.Heal(1);
+                central.Heal(5);
                 grid.UseHeal(tile.x, tile.y);
             }
 

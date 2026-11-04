@@ -151,7 +151,17 @@ MonoBehaviour:
   loadingText: {fileID: 133121914}
   tempsCarrega: 3
   velocitatAnimacio: 0.4
-  escenaJoc: FirstLevel
+  escenaJoc:
+  - FirstLevel
+  - SecondLevel
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
 --- !u!4 &44253856
 Transform:
   m_ObjectHideFlags: 0

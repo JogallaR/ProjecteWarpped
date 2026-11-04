@@ -1,6 +1,7 @@
 using System.Security.Cryptography.X509Certificates;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.Collections;
 
 public class GridBehaviour : MonoBehaviour
 {
@@ -44,6 +45,7 @@ public class GridBehaviour : MonoBehaviour
                 gridArray[x, y] = stat;
             }
         }
+        bossSpawnArea();
     }
 
     public void DamageEffect(int x, int y)
@@ -58,6 +60,19 @@ public class GridBehaviour : MonoBehaviour
         effect.Play();
         Destroy(effect.gameObject, effect.main.duration);
         gridArray[x,y].UseHeal();
+    }
+
+    public void bossSpawnArea()
+    {
+        
+        for (int x = 8; x != 11; x++)
+        {
+            for (int y = 8; y != 11; y++)
+            {    
+            //print(x + "|" + y + " boss area");
+            gridArray[x,y].bossArea();
+            }
+        }
     }
 
     public Vector3 GridToWorld(int x, int y)
@@ -78,6 +93,17 @@ public class GridBehaviour : MonoBehaviour
     public bool doesDamage(int x, int y)
     {
         return gridArray[x, y].dangerous;
+    }
+
+    public void chekcDisableDamage()
+    {
+        for (int columCheck = 0; columCheck != columns; columCheck++)
+        {
+            for (int rowCheck = 0; rowCheck != rows; rowCheck++)
+            {    
+            gridArray[columCheck,rowCheck].DeactivateCheck();
+            }
+        }
     }
 
     public List<GridStat> FindPath(Vector2Int start, Vector2Int end)

@@ -64267,6 +64267,78 @@ Mesh:
       - serializedVersion: 1
         m_IndexStart: 0
         m_IndexCount: 0
+--- !u!1 &399809004
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 399809005}
+  - component: {fileID: 399809007}
+  - component: {fileID: 399809006}
+  m_Layer: 5
+  m_Name: PathIcon
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &399809005
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 399809004}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.1372, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1292038385}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -480, y: 13}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &399809006
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 399809004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.RawImage
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Texture: {fileID: 2800000, guid: 4e306b8c24acc2546bcab919d09295ec, type: 3}
+  m_UVRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+--- !u!222 &399809007
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 399809004}
+  m_CullTransparentMesh: 1
 --- !u!1 &400316270
 GameObject:
   m_ObjectHideFlags: 0
@@ -79242,7 +79314,7 @@ MonoBehaviour:
   grid: {fileID: 1848452885}
   textHealth: {fileID: 1592431637}
   moveText: {fileID: 1671733696}
-  settingsPanel: {fileID: 720522993}
+  settingsPanel: {fileID: 0}
   deathMenu: {fileID: 1420285261}
   deathPannel: {fileID: 1768853924}
 --- !u!4 &478604785
@@ -125128,7 +125200,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8753619234690991415, guid: e812c04705f47d645beb13e90ec0ff93, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1371803402}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8753619234690991416, guid: e812c04705f47d645beb13e90ec0ff93, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2038173365}
   m_SourcePrefab: {fileID: 100100000, guid: e812c04705f47d645beb13e90ec0ff93, type: 3}
 --- !u!1 &778596510
 GameObject:
@@ -207082,6 +207157,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1289632757}
   m_Mesh: {fileID: 2039258148}
+--- !u!224 &1292038385 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 1608140951251097100, guid: 888d70d409cb89d419216025a2184f1d, type: 3}
+  m_PrefabInstance: {fileID: 1469593692}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1292483802
 GameObject:
   m_ObjectHideFlags: 0
@@ -232339,7 +232419,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 1608140951251097100, guid: 888d70d409cb89d419216025a2184f1d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 399809005}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 888d70d409cb89d419216025a2184f1d, type: 3}
 --- !u!43 &1470399017
@@ -266654,7 +266737,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1675331845}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1420285261}
+        m_TargetAssemblyTypeName: DeathMenu, Assembly-CSharp
+        m_MethodName: ReturnToMainMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1675331845
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -321683,6 +321778,31 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 2fb2accee9d312f40bc2a1243cf5e0e7, type: 3}
   m_PrefabInstance: {fileID: 2036848894}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2038173364 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8753619234690991416, guid: e812c04705f47d645beb13e90ec0ff93, type: 3}
+  m_PrefabInstance: {fileID: 776755100}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2038173365
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2038173364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73ad916d86c693941902e834c11e49ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyLogic
+  bossHealth: {fileID: 0}
+  grid: {fileID: 1848452885}
+  warningColor: {r: 1, g: 0.55, b: 0, a: 1}
+  playerMover: {fileID: 0}
+  vida: 20
+  damage: 3
+  minSize: 1
+  maxSize: 2
 --- !u!1 &2038804403
 GameObject:
   m_ObjectHideFlags: 0

@@ -53,14 +53,23 @@ public class CentralPlayer : MonoBehaviour
             return;
         }
 
-        if (inSettings) return;
-
-        if (keyboard.fKey.wasPressedThisFrame)
+        if (keyboard.escapeKey.wasPressedThisFrame)
         {
-            TakeDamage(5);
+            mover.changePathLogic();
             return;
         }
 
+        if (inSettings) return;
+
+        //Debug
+        if (keyboard.fKey.wasPressedThisFrame)
+        {
+            TakeDamage(5);
+            //Not for testing death plane
+            return;
+        }
+
+        //Debug
         if (keyboard.hKey.wasPressedThisFrame)
         {
             Heal(1);

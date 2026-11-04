@@ -34,6 +34,7 @@ public class DeathMenu : MonoBehaviour
     
     public void ReturnToMainMenu()
     {
+        print("prova1");
         Time.timeScale = 1f; // Imprescindible: tornar el temps a 1 abans de carregar el menú
         SceneManager.LoadScene(mainMenuSceneName);
         print("Death resp");
