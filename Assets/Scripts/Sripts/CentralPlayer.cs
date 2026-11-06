@@ -53,16 +53,6 @@ public class CentralPlayer : MonoBehaviour
             return;
         }
 
-<<<<<<< HEAD
-        if (inSettings) return;
-
-        if (keyboard.fKey.wasPressedThisFrame)
-        {
-            TakeDamage(5);
-            return;
-        }
-
-=======
         if (keyboard.escapeKey.wasPressedThisFrame)
         {
             mover.changePathLogic();
@@ -80,7 +70,6 @@ public class CentralPlayer : MonoBehaviour
         }
 
         //Debug
->>>>>>> origin/main
         if (keyboard.hKey.wasPressedThisFrame)
         {
             Heal(1);
@@ -100,10 +89,7 @@ public class CentralPlayer : MonoBehaviour
 
     public void TakeDamage(int amount)
     {
-<<<<<<< HEAD
         GameStats.malRebut += amount;
-=======
->>>>>>> origin/main
         vida = Mathf.Max(vida - amount, 0);
         UpdateUI();
         if (vida == 0) Die();
@@ -111,10 +97,7 @@ public class CentralPlayer : MonoBehaviour
 
     public void Heal(int amount)
     {
-<<<<<<< HEAD
         GameStats.cures++;
-=======
->>>>>>> origin/main
         vida = Mathf.Min(vida + amount, maxVida);
         UpdateUI();
         if (mover) mover.enabled = true;
