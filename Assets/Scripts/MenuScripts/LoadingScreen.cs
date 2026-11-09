@@ -15,7 +15,6 @@ public class LoadingScreen : MonoBehaviour
 
     [Header("Escena del joc")]
     [SerializeField] private string escenaJoc = "SampleScene";
-    //[SerializeField] private string[] escenaJoc = {"SampleScene","SampleScene2"};
 
     private void Start()
     {
@@ -39,7 +38,7 @@ public class LoadingScreen : MonoBehaviour
             yield return new WaitForSeconds(velocitatAnimacio);
             temps += velocitatAnimacio;
         }
+
         SceneManager.LoadScene(escenaJoc);
-        //SceneManager.LoadScene(escenaJoc[Random.Range(0, escenaJoc.Length + 1)]);
     }
 }
