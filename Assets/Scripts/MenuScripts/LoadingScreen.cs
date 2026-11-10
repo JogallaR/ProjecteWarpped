@@ -1,3 +1,4 @@
+
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -12,7 +13,8 @@ public class LoadingScreen : MonoBehaviour
     [SerializeField] private float tempsCarrega = 3f;
     [SerializeField] private float velocitatAnimacio = 0.4f;
 
-    private readonly string[] escenaJoc = { "FirstLevel", "SecondLevel" };
+    [Header("Escena del joc")]
+    [SerializeField] private string escenaJoc = "SampleScene";
 
     private void Start()
     {
@@ -37,6 +39,6 @@ public class LoadingScreen : MonoBehaviour
             temps += velocitatAnimacio;
         }
 
-        SceneManager.LoadScene(escenaJoc[Random.Range(0, escenaJoc.Length)]);
+        SceneManager.LoadScene(escenaJoc);
     }
 }
