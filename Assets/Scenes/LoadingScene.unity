@@ -154,14 +154,6 @@ MonoBehaviour:
   escenaJoc:
   - FirstLevel
   - SecondLevel
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
 --- !u!4 &44253856
 Transform:
   m_ObjectHideFlags: 0
