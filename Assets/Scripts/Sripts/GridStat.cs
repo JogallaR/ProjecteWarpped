@@ -28,7 +28,7 @@ public class GridStat : MonoBehaviour
 
         int spec = Random.Range(1, 100);
 
-        if (spec == 80) heal = true;
+        if (spec < 3) heal = true;
         if (spec > 81) walkable = false;
 
         RefreshColor();
