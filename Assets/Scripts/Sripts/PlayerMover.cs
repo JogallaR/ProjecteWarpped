@@ -101,7 +101,6 @@ public class PlayerMover : MonoBehaviour
                 }
                 return;
             }
-
         }
 
         if (mouse != null && mouse.leftButton.wasPressedThisFrame)
@@ -130,6 +129,7 @@ public class PlayerMover : MonoBehaviour
 
     public void EndTurn()
     {
+        GameStats.torns++;
         manaThisTurn = Random.Range(minRoll, maxRoll + 1);
         movePoints = manaThisTurn * MovesPerMana;
         print($"New turn: {manaThisTurn} mana x {MovesPerMana} = {movePoints} move points");
@@ -172,6 +172,7 @@ public class PlayerMover : MonoBehaviour
         }
 
         movePoints -= steps;
+        GameStats.passos += steps;
         UpdateUI();
         StartCoroutine(FollowPath(path));
     }

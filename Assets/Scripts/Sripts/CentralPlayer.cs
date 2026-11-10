@@ -89,6 +89,7 @@ public class CentralPlayer : MonoBehaviour
 
     public void TakeDamage(int amount)
     {
+        GameStats.malRebut += amount;
         vida = Mathf.Max(vida - amount, 0);
         UpdateUI();
         if (vida == 0) Die();
@@ -96,6 +97,7 @@ public class CentralPlayer : MonoBehaviour
 
     public void Heal(int amount)
     {
+        GameStats.cures++;
         vida = Mathf.Min(vida + amount, maxVida);
         UpdateUI();
         if (mover) mover.enabled = true;

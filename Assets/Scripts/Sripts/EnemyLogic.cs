@@ -6,6 +6,7 @@ public class EnemyLogic : MonoBehaviour
 {
     enum AttackType { Square, Cross, Row, Column, Diagonal, Ring }
 
+    [SerializeField] VictoryMenu victoryMenu;
     [SerializeField] TMP_Text bossHealth;
     [SerializeField] GridBehaviour grid;
     [SerializeField] Color warningColor = new Color(1f, 0.55f, 0f);
@@ -171,6 +172,13 @@ public class EnemyLogic : MonoBehaviour
         print("Boss defeated");
         enabled = false;
         //Posar a pantalla de victoria
+        if (victoryMenu) victoryMenu.Win();
+    }
+
+    void Update()
+    {
+        var kb = UnityEngine.InputSystem.Keyboard.current;
+        if (kb != null && kb.gKey.wasPressedThisFrame) TakeDamage(5);
     }
 
     void UpdateUI()
