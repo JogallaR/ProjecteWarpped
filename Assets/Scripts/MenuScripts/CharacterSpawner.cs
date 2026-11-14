@@ -49,10 +49,11 @@ public class CharacterSpawner : MonoBehaviour
             selectedIndex = 0;
         }
 
-        if (!grid.InBounds(spawnTile.x, spawnTile.y))
+        if (!grid.InBounds(spawnTile.x, spawnTile.y) || grid.gridArray[spawnTile.x, spawnTile.y] == null)
         {
-            Debug.LogWarning($"Casella {spawnTile} fora del grid, s'usa (0,0).");
-            spawnTile = Vector2Int.zero;
+            Vector2Int fallback = grid.GetValidSpawnTile(spawnTile);
+            Debug.LogWarning($"Casella {spawnTile} fora del taulell rodó, s'usa {fallback}.");
+            spawnTile = fallback;
         }
 
         grid.gridArray[spawnTile.x, spawnTile.y].MakeSpawnSafe();
@@ -79,6 +80,43 @@ public class CharacterSpawner : MonoBehaviour
         else
         {
             Debug.LogError($"El prefab {instance.name} no té el component PlayerMover!");
+        }
+
+        // Assegurem que el personatge tingui MirarObjectiu i miri cap a l'enemic
+        MirarObjectiu mirarJugador = instance.GetComponent<MirarObjectiu>();
+        if (mirarJugador == null)
+        {
+            mirarJugador = instance.AddComponent<MirarObjectiu>();
+        }
+
+        SpawnerAleatori spawnerEnemic = FindFirstObjectByType<SpawnerAleatori>();
+        if (spawnerEnemic != null)
+        {
+            spawnerEnemic.jugadorActual = instance.transform;
+
+            if (spawnerEnemic.EnemicActual != null)
+            {
+                mirarJugador.AssignarObjectiu(spawnerEnemic.EnemicActual);
+
+                MirarObjectiu mirarEnemic = spawnerEnemic.EnemicActual.GetComponent<MirarObjectiu>();
+                if (mirarEnemic == null)
+                {
+                    mirarEnemic = spawnerEnemic.EnemicActual.gameObject.AddComponent<MirarObjectiu>();
+                }
+                mirarEnemic.AssignarObjectiu(instance.transform);
+            }
+            else if (spawnerEnemic.puntAparicio != null)
+            {
+                mirarJugador.AssignarObjectiu(spawnerEnemic.puntAparicio);
+            }
+        }
+        else
+        {
+            MirarObjectiu mirarSpawner = GetComponent<MirarObjectiu>();
+            if (mirarSpawner != null && mirarSpawner.Objectiu != null)
+            {
+                mirarJugador.AssignarObjectiu(mirarSpawner.Objectiu);
+            }
         }
     }
 }

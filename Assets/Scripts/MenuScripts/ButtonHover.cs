@@ -17,6 +17,7 @@ public class ButtonHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     private TextMeshProUGUI tmpText;
     private Color originalColor;
     private Color targetColor;
+    private bool started;
 
     private void Awake()
     {
@@ -28,6 +29,7 @@ public class ButtonHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     {
         originalScale = transform.localScale;
         targetScale = originalScale;
+        started = true;
 
         if (tmpText != null)
         {
@@ -67,6 +69,9 @@ public class ButtonHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 
     private void OnDisable()
     {
+        // Si es desactiva abans de Start, originalScale encara val (0,0,0) i el boto desapareixeria
+        if (!started) return;
+
         transform.localScale = originalScale;
         targetScale = originalScale;
 
@@ -76,4 +81,4 @@ public class ButtonHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
             targetColor = originalColor;
         }
     }
-}
+}

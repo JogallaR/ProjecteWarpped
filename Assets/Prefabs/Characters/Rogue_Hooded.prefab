@@ -675,6 +675,8 @@ MonoBehaviour:
   position: {x: 0, y: 0}
   moveSpeed: 8
   heightOffset: 0.05
+  rightHandWeaponPrefab: {fileID: 919132149155446097, guid: 486f88dd741e6b240aedb79155548101, type: 3}
+  leftHandWeaponPrefab: {fileID: 919132149155446097, guid: 7ca30edc4524a4f419f86b1bec7aa450, type: 3}
 --- !u!1 &2860786129016789352
 GameObject:
   m_ObjectHideFlags: 0

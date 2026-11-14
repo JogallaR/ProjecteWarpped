@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb8ca78b46a542be99f29cafe20836ea, type: 3}
+  m_Name: GameSoundLibrary
+  m_EditorClassIdentifier: Assembly-CSharp::GameSoundLibrary
+  sfxGroup: {fileID: -7739108569892218302, guid: 95bb55649f2c1a9468d187d2648b5987, type: 2}
+  footstep: {fileID: 0}
+  meleeSwing: {fileID: 0}
+  meleeHit: {fileID: 8300000, guid: 9ee32f024d6694448a5a0a391cfdfd78, type: 3}
+  arrowShoot: {fileID: 8300000, guid: 5263e1440db721a41b182ee12181a785, type: 3}
+  arrowHit: {fileID: 8300000, guid: 7ff3a6e04435a934487ed9f5819a6836, type: 3}
+  magicCast: {fileID: 0}
+  magicHit: {fileID: 8300000, guid: fdeeaf5dbc167f14eb0fe307b2ce23fa, type: 3}
+  playerHurt: {fileID: 8300000, guid: 19a5e9e60edd17b4eaf8ab01d6a43dd9, type: 3}
+  heal: {fileID: 0}
+  playerDeath: {fileID: 0}
+  actionDenied: {fileID: 0}
+  enemyRoar: {fileID: 8300000, guid: eef3cd8e0f859a349aab87c288cc4fa2, type: 3}
+  enemyWarning: {fileID: 0}
+  enemySlam: {fileID: 8300000, guid: 08d294362645f324f94a8e40e8e62111, type: 3}
+  enemyHurt: {fileID: 8300000, guid: 185de83151bde994d8e3c6a5dff77588, type: 3}
+  enemyDeath: {fileID: 0}
+  victory: {fileID: 0}
+  masterSfxVolume: 1

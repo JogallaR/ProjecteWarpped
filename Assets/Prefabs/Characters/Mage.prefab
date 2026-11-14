@@ -713,7 +713,7 @@ Transform:
   m_GameObject: {fileID: 2507848002468566048}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 491.26227, y: 207.48363, z: 590.16254}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -762,7 +762,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e063974c6f5889c4fa1fd7449f9ba8c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CentralPlayer
-  vida: 2
+  vida: 20
   maxVida: 20
   inSettings: 0
   mover: {fileID: 8829625168693550705}
@@ -792,6 +792,8 @@ MonoBehaviour:
   position: {x: 0, y: 0}
   moveSpeed: 8
   heightOffset: 0.05
+  rightHandWeaponPrefab: {fileID: 919132149155446097, guid: ac732d5d72f4ad9419c0412355a9d54b, type: 3}
+  leftHandWeaponPrefab: {fileID: 919132149155446097, guid: d626584e09e6a6645aaf379fe8df93eb, type: 3}
 --- !u!1 &2752011732252494017
 GameObject:
   m_ObjectHideFlags: 0

@@ -112,6 +112,8 @@ public class MainMenuManager : MonoBehaviour
     public void StartGame()
     {
         Debug.Log("Començant partida...");
+        GameStats.fase = 1;
+        GameStats.Reset();
 
         SceneManager.LoadScene(gameSceneName);
     }

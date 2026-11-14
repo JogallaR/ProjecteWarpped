@@ -47,17 +47,9 @@ public class CentralPlayer : MonoBehaviour
         Keyboard keyboard = Keyboard.current;
         if (keyboard == null || mover == null) return;
 
-        if (keyboard.escapeKey.wasPressedThisFrame)
-        {
-            SetSettings(!inSettings);
-            return;
-        }
-
-        if (keyboard.escapeKey.wasPressedThisFrame)
-        {
-            mover.changePathLogic();
-            return;
-        }
+        // L'Esc ara el gestiona nomes el PauseMenu (abans aqui es desactivava el PlayerMover
+        // i en sortir amb el boto RESUME el personatge es quedava sense poder-se moure)
+        inSettings = PauseMenu.IsPaused;
 
         if (inSettings) return;
 
@@ -76,20 +68,20 @@ public class CentralPlayer : MonoBehaviour
             return;
         }
 
-        if (keyboard.enterKey.wasPressedThisFrame && !mover.IsMoving)
+        if (GameSettings.WasPressed(GameAction.SkipTurn) && !mover.IsMoving && mover.enabled)
             mover.EndTurn();
     }
 
     void SetSettings(bool open)
     {
+        // Ja no activa/desactiva cap panell: la pausa i les opcions les gestiona el PauseMenu
         inSettings = open;
-        if (mover) mover.enabled = !open;
-        if (settingsPanel) settingsPanel.SetActive(open);
     }
 
     public void TakeDamage(int amount)
     {
         GameStats.malRebut += amount;
+        if (amount > 0 && vida > 0) GameAudio.Play(Sfx.PlayerHurt);
         vida = Mathf.Max(vida - amount, 0);
         UpdateUI();
         if (vida == 0) Die();
@@ -98,6 +90,7 @@ public class CentralPlayer : MonoBehaviour
     public void Heal(int amount)
     {
         GameStats.cures++;
+        if (amount > 0) GameAudio.Play(Sfx.Heal, 0.8f, 0f);
         vida = Mathf.Min(vida + amount, maxVida);
         UpdateUI();
         if (mover) mover.enabled = true;
@@ -107,11 +100,19 @@ public class CentralPlayer : MonoBehaviour
     {
         if (mover) mover.enabled = false;
         print("Player died");
+        GameAudio.Play(Sfx.PlayerDeath, 1f, 0f);
         deathMenu.FinishGame();
     }
 
-    void UpdateUI()
+    public void SetClassMaxHealth(int classHealth)
+    {
+        maxVida = classHealth;
+        vida = classHealth;
+        UpdateUI();
+    }
+
+    public void UpdateUI()
     {
         if (textHealth) textHealth.text = $"{vida}";
     }
-}
+}

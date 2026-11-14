@@ -772,6 +772,7 @@ GameObject:
   - component: {fileID: 2079826949043562659}
   - component: {fileID: 7405688266768236747}
   - component: {fileID: 2126608368495423153}
+  - component: {fileID: 1177771432916530147}
   m_Layer: 0
   m_Name: Barbarian
   m_TagString: Untagged
@@ -862,10 +863,28 @@ MonoBehaviour:
   minRoll: 2
   maxRoll: 6
   movePoints: 0
+  effectDo: 1
   grid: {fileID: 0}
   position: {x: 0, y: 0}
   moveSpeed: 8
   heightOffset: 0.05
+  smartWalk: 0
+  rightHandWeaponPrefab: {fileID: 919132149155446097, guid: 2f74f6d0b56400840950a1ccc6167c60, type: 3}
+  leftHandWeaponPrefab: {fileID: 919132149155446097, guid: 02d79849cc66818409b48fb43bb265bc, type: 3}
+--- !u!114 &1177771432916530147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4717234664233445475}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e71a10c29a688741bf72091268e1289, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MirarObjectiu
+  objectiu: {fileID: 0}
+  velocitatRotacio: 5
 --- !u!1 &4720646129733581814
 GameObject:
   m_ObjectHideFlags: 0

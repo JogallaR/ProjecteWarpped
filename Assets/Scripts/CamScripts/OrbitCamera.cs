@@ -14,6 +14,19 @@ public class OrbitCamera : MonoBehaviour
     [SerializeField] private float minVerticalAngle = -20f;
     [SerializeField] private float maxVerticalAngle = 60f;
 
+    [Header("Zoom (rodeta del ratoli)")]
+    [Tooltip("Camera que s'apropa/allunya. Si es buit, s'agafa la camera filla d'aquest objecte.")]
+    [SerializeField] private Transform zoomCamera;
+    [SerializeField] private float minZoom = 0.45f;   // 0.45 = un 55% mes a prop que la posicio inicial
+    [SerializeField] private float maxZoom = 1.5f;    // 1.5 = un 50% mes lluny
+    [SerializeField] private float zoomStep = 0.1f;   // canvi per cada "clic" de la rodeta
+    [SerializeField] private float zoomSmooth = 10f;
+
+    private Vector3 zoomBaseLocalPosition;
+    private float targetZoom = 1f;
+    private float currentZoom = 1f;
+    private float baseDistance;
+
     private float horizontalAngle;
     private float verticalAngle = 15f;
 
@@ -27,6 +40,35 @@ public class OrbitCamera : MonoBehaviour
         }
 
         horizontalAngle = transform.eulerAngles.y;
+
+        if (zoomCamera == null)
+        {
+            Camera cam = GetComponentInChildren<Camera>();
+            if (cam != null && cam.transform != transform) zoomCamera = cam.transform;
+        }
+        if (zoomCamera != null) zoomBaseLocalPosition = zoomCamera.localPosition;
+        baseDistance = distance;
+    }
+
+    private void UpdateZoom()
+    {
+        Mouse mouse = Mouse.current;
+        if (mouse != null && !PauseMenu.IsPaused && Time.timeScale > 0f)
+        {
+            float scroll = mouse.scroll.ReadValue().y;
+            if (Mathf.Abs(scroll) > 0.01f)
+            {
+                // Rodeta endavant = apropar
+                targetZoom = Mathf.Clamp(targetZoom - Mathf.Sign(scroll) * zoomStep, minZoom, maxZoom);
+            }
+        }
+
+        currentZoom = Mathf.Lerp(currentZoom, targetZoom, 1f - Mathf.Exp(-zoomSmooth * Time.unscaledDeltaTime));
+
+        if (zoomCamera != null)
+            zoomCamera.localPosition = zoomBaseLocalPosition * currentZoom;
+        else
+            distance = baseDistance * currentZoom;
     }
 
     private void LateUpdate()
@@ -34,23 +76,31 @@ public class OrbitCamera : MonoBehaviour
         if (enemyTarget == null || Keyboard.current == null)
             return;
 
+        UpdateZoom();
+
         float horizontalInput = 0f;
         float verticalInput = 0f;
 
-        if (Keyboard.current.dKey.isPressed)
+        // Tecles configurables des d'Options > Controls
+        if (GameSettings.IsHeld(GameAction.CameraRight))
             horizontalInput = -1f;
 
-        if (Keyboard.current.aKey.isPressed)
+        if (GameSettings.IsHeld(GameAction.CameraLeft))
             horizontalInput = 1f;
 
-        if (Keyboard.current.sKey.isPressed)
+        if (GameSettings.IsHeld(GameAction.CameraDown))
             verticalInput = 1f;
 
-        if (Keyboard.current.wKey.isPressed)
+        if (GameSettings.IsHeld(GameAction.CameraUp))
             verticalInput = -1f;
 
-        horizontalAngle += horizontalInput * rotationSpeed * Time.deltaTime;
-        verticalAngle += verticalInput * rotationSpeed * Time.deltaTime;
+        if (GameSettings.InvertHorizontal) horizontalInput = -horizontalInput;
+        if (GameSettings.InvertVertical) verticalInput = -verticalInput;
+
+        float speed = rotationSpeed * GameSettings.CameraSpeed;
+
+        horizontalAngle += horizontalInput * speed * Time.deltaTime;
+        verticalAngle += verticalInput * speed * Time.deltaTime;
 
         verticalAngle = Mathf.Clamp(
             verticalAngle,

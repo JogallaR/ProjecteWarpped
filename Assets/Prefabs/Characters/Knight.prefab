@@ -728,6 +728,7 @@ GameObject:
   - component: {fileID: 7962238661683702239}
   - component: {fileID: 7974631935136384232}
   - component: {fileID: 9201673038387409016}
+  - component: {fileID: 1785519616114330829}
   m_Layer: 0
   m_Name: Knight
   m_TagString: Untagged
@@ -820,10 +821,28 @@ MonoBehaviour:
   minRoll: 2
   maxRoll: 6
   movePoints: 0
+  effectDo: 1
   grid: {fileID: 0}
   position: {x: 0, y: 0}
   moveSpeed: 8
   heightOffset: 0.05
+  smartWalk: 0
+  rightHandWeaponPrefab: {fileID: 919132149155446097, guid: 2f7a8159e829679408db034759d9a5be, type: 3}
+  leftHandWeaponPrefab: {fileID: 919132149155446097, guid: 87c5274a0c8ac0846a21dd8129e9c283, type: 3}
+--- !u!114 &1785519616114330829
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3734734891217348895}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e71a10c29a688741bf72091268e1289, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MirarObjectiu
+  objectiu: {fileID: 0}
+  velocitatRotacio: 5
 --- !u!1 &3974646534658962942
 GameObject:
   m_ObjectHideFlags: 0
