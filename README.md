@@ -34,18 +34,10 @@ No cal tenir Unity instal·lat per jugar.
 ## Com obrir el projecte
 
 1. Instal·la **Unity Hub** i, des d'allà, la versió **Unity 6000.3.24f1**.
-2. Clona o descarrega el repositori:
-   ```bash
-   git clone <url-del-repositori>
-   ```
+2. Descomprimeix la carpeta del projecte (`ProjecteWarpped`).
 3. A Unity Hub, prem **Add → Add project from disk** i selecciona la carpeta `ProjecteWarpped`.
 4. Obre el projecte. La primera vegada Unity importarà tots els recursos i trigarà uns minuts.
 5. Obre l'escena **`Assets/Scenes/MainMenu.unity`** i prem **Play**.
-
-### Generar l'executable
-1. **File → Build Profiles**.
-2. A **Scene List** hi han de ser, en aquest ordre: `MainMenu`, `LoadingScene`, `FirstLevel`, `SecondLevel`.
-3. Tria la plataforma **Windows** i prem **Build**.
 
 ### Arbres del terreny (opcional)
 Si a la consola surt l'avís *"The tree X must use the Nature/Soft Occlusion shader"*, executa **Tools → Warped → Fix Terrain Trees** i després guarda l'escena.
