@@ -6,41 +6,27 @@
 
 ---
 
-## Jugar directament (executable)
+## Com jugar
 
-No cal tenir Unity instal·lat per jugar.
+1. Descomprimeix el fitxer `.zip` del joc.
+2. Obre la carpeta i executa **`Warped.exe`**.
 
-1. Obre la carpeta **`Build/`** del repositori.
-2. Executa **`Warped.exe`** (Windows 10/11, 64 bits).
+**Requisits:** Windows 10/11 de 64 bits. No cal tenir Unity instal·lat.
 
-> No moguis `Warped.exe` fora de la carpeta: necessita els fitxers que té al costat (`Warped_Data/`, `UnityPlayer.dll`, `MonoBleedingEdge/`...). Si el vols passar a algú, comprimeix tota la carpeta `Build/` en un `.zip`.
-
----
-
-## Requisits per obrir el projecte
-
-| Requisit | Versió |
-|---|---|
-| **Unity** | **Unity 6.3 LTS (6000.3.24f1)** |
-| Render pipeline | Universal Render Pipeline (URP) |
-| Paquets | Input System, TextMeshPro, Unity UI (s'instal·len sols amb el projecte) |
-| Sistema operatiu | Windows, macOS o Linux |
-| Mòdul per generar l'executable | Windows Build Support (Mono) |
-
-> Es recomana fer servir exactament la versió **6000.3.24f1**. Amb una altra versió, Unity demanarà actualitzar el projecte i alguns elements podrien no funcionar bé.
+> `Warped.exe` ha de quedar a la mateixa carpeta que `Warped_Data/`, `UnityPlayer.dll` i `MonoBleedingEdge/`. Si el mous sol, no s'obrirà.
 
 ---
 
-## Com obrir el projecte
+## Versió de Unity i com obrir el projecte
 
-1. Instal·la **Unity Hub** i, des d'allà, la versió **Unity 6000.3.24f1**.
-2. Descomprimeix la carpeta del projecte (`ProjecteWarpped`).
-3. A Unity Hub, prem **Add → Add project from disk** i selecciona la carpeta `ProjecteWarpped`.
-4. Obre el projecte. La primera vegada Unity importarà tots els recursos i trigarà uns minuts.
-5. Obre l'escena **`Assets/Scenes/MainMenu.unity`** i prem **Play**.
+- **Versió de Unity:** **Unity 6.3 LTS (6000.3.24f1)**
+- **Render pipeline:** Universal Render Pipeline (URP)
+- **Paquets:** Input System, TextMeshPro, Unity UI (s'instal·len sols amb el projecte)
 
-### Arbres del terreny (opcional)
-Si a la consola surt l'avís *"The tree X must use the Nature/Soft Occlusion shader"*, executa **Tools → Warped → Fix Terrain Trees** i després guarda l'escena.
+Per obrir el projecte a l'editor:
+1. Instal·la **Unity 6000.3.24f1** des de Unity Hub.
+2. A Unity Hub, prem **Add → Add project from disk** i selecciona la carpeta `ProjecteWarpped`.
+3. Obre l'escena **`Assets/Scenes/MainMenu.unity`** i prem **Play**.
 
 ---
 
@@ -86,16 +72,9 @@ Derrotar l'enemic de cada fase deixant-li la vida a 0 abans que ell et derroti a
 | Apropar / allunyar la càmera | **Rodeta del ratolí** |
 | Pausa | **Esc** |
 
-Totes les tecles es poden canviar a **Options → Controls → Reassign Keys**. En aquest menú també es pot ajustar la **velocitat de la càmera** i **invertir els eixos** horitzontal i vertical. La configuració es guarda entre partides.
+Totes les tecles es poden canviar a **Options → Controls → Reassign Keys**. En aquest menú també es pot ajustar la **velocitat de la càmera** i **invertir els eixos**. La configuració es guarda entre partides.
 
 ![Opcions de controls](Docs/screenshots/controls_menu.png)
-
----
-
-## Opcions
-
-- **Sound**: volum general, de la música i dels efectes.
-- **Controls**: velocitat de la càmera, invertir els eixos i reassignar les tecles.
 
 ---
 
@@ -106,28 +85,6 @@ Totes les tecles es poden canviar a **Options → Controls → Reassign Keys**. 
 | ![Menú principal](Docs/screenshots/main_menu.png) | ![Selecció d'heroi](Docs/screenshots/hero_selection.png) |
 | ![Combat](Docs/screenshots/combat.png) | ![Atac de l'enemic](Docs/screenshots/enemy_attack.png) |
 | ![Menú de pausa](Docs/screenshots/pause_menu.png) | ![Victòria](Docs/screenshots/victory.png) |
-
----
-
-## Estructura del projecte
-
-```
-ProjecteWarpped/
-├── Build/               Executable del joc (Warped.exe)
-├── Docs/screenshots/    Imatges del README
-└── Assets/
-    ├── Scenes/          Escenes del joc (MainMenu, LoadingScene, FirstLevel, SecondLevel)
-    ├── Scripts/
-    │   ├── Sripts/          Lògica del combat (PlayerMover, EnemyLogic, GridBehaviour...)
-    │   ├── MenuScripts/     Menús (principal, pausa, victòria, derrota, selecció)
-    │   ├── OptionsScript/   Opcions de so i controls
-    │   ├── CamScripts/      Càmera orbital
-    │   └── Audio/           Gestor d'efectes de so
-    ├── Prefabs/         Personatges, enemics, HUD...
-    ├── Music/           Música i efectes de so
-    ├── Resources/       Llibreria de sons (GameSoundLibrary)
-    └── Imports/         Recursos externs (models, animacions, terrenys)
-```
 
 ---
 
